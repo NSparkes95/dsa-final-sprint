@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Previous Tree Snapshots!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px #ddd;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #d8d8d8;
+        }
+
+        th {
+            background-color: #faf4e4;
+        }
+
+        pre {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .btn-row {
+            margin-top: 16px;
+        }
+
+        a.button {
+            padding: 8px 20px;
+            border-radius: 6px;
+            border: none;
+            background: #2260a9;
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        a.button:hover {
+            background: #174475;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Previous Tree Snapshots</h2>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Input Numbers</th>
+                <th>Tree JSON</th>
+                <th>Created</th>
+            </tr>
+            <tr th:each="snap, iterStat : ${snapshots}">
+                <td th:text="${iterStat.count}"></td>
+                <td th:text="${snap.inputNumbers}"></td>
+                <td><pre th:text="${snap.treeJson}"></pre></td>
+                <td th:text="${snap.createdAt}"></td>
+            </tr>
+        </table>
+        <div class="btn-row">
+            <a href="/enter-numbers" class="button">Back to Input</a>
+        </div>
+    </div>
+</body>
+</html>
