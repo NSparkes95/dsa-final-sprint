@@ -19,7 +19,7 @@ public class TreeSnapshotController {
     // Shot HTML form for number input
     @GetMapping("/enter-numbers")
     public String showNumberForm() {
-        return " enter-numbers";
+        return "enter-numbers";
     }
 
     // Process input numbers and display the tree snapshot
