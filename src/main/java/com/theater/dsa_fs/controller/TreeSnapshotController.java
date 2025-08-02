@@ -35,9 +35,6 @@ public class TreeSnapshotController {
         // Create a TreeSnapshot object
         TreeSnapshot treeSnapshot = treeSnapshotService.createTreeSnapshot(numberList);
 
-        // Save the snapshot using the service
-        treeSnapshotService.saveSnapshot(treeSnapshot);
-
         // Add the snapshot to the model for display
         model.addAttribute("snapshot", treeSnapshot);
 
@@ -46,7 +43,7 @@ public class TreeSnapshotController {
 
     // Display the saved snapshots
     @GetMapping("/previous-snapshots")
-    public string showPreviousSnapshots(Model model) {
+    public String showPreviousSnapshots(Model model) {
         // Retrieve all saved snapshots
         List<TreeSnapshot> snapshots = treeSnapshotService.getAllSnapshots();
 
