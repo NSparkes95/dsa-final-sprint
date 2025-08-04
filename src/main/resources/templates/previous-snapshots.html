@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Enter Numbers for BST</title>
+    <title>Previous Tree Snapshots</title>
     <meta charset="UTF-8"/>
     <!-- Bootstrap & Google Fonts -->
     <link rel="stylesheet"
@@ -20,7 +20,7 @@
             box-shadow: 0 4px 32px 0 #c8c8ee;
             padding: 38px 36px 28px 36px;
             margin: 36px auto;
-            max-width: 640px;
+            max-width: 900px;
         }
         h1, h2 {
             color: #8ac6d1;
@@ -37,28 +37,61 @@
             font-weight: bold;
             box-shadow: 0 2px 8px #d1d1f1;
             transition: background 0.3s;
+            margin-top: 20px;
+            display: inline-block;
         }
         .btn-spring:hover {
             background: linear-gradient(90deg, #e0caff 0%, #a8e6cf 100%);
             color: #35354d;
         }
-        label {
+        table {
+            width: 100%;
+            margin-top: 24px;
+            background: rgba(255,255,255,0.96);
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #e8eaf6;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e6e6fa;
+        }
+        th {
+            background: #c0e0fc;
+            color: #524c57;
             font-weight: 600;
-            color: #d492b5;
-            margin-bottom: 8px;
+        }
+        td {
+            color: #5d4157;
+            font-size: 1.05rem;
+        }
+        tr:last-child td {
+            border-bottom: none;
         }
     </style>
 </head>
 <body>
 <div class="spring-card">
-    <h2>🌸 Enter Numbers 🌸</h2>
-    <form th:action="@{/process-numbers}" method="post">
-        <label for="numbers" class="form-label">Enter numbers (comma separated):</label><br>
-        <input type="text" id="numbers" name="numbers" class="form-control" style="width:300px;" placeholder="e.g. 7,2,9,1,6" required/><br><br>
-        <button type="submit" class="btn btn-spring">Create Tree Snapshot</button>
-    </form>
-    <br>
-    <a href="/previous-snapshots" class="btn btn-spring">View Previous Snapshots</a>
+    <h2>🌷 Previous Tree Snapshots 🌷</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Input Numbers</th>
+            <th>Tree JSON</th>
+            <th>Created</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="snapshot,iter : ${snapshots}">
+            <td th:text="${iter.count}">1</td>
+            <td th:text="${snapshot.inputNumbers}"></td>
+            <td th:text="${snapshot.treeJson}"></td>
+            <td th:text="${snapshot.createdAt}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/enter-numbers" class="btn btn-spring">Back to Input</a>
 </div>
 </body>
 </html>
