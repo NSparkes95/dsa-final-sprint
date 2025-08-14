@@ -50,4 +50,16 @@ The backend is implemented entirely in Java using Spring Boot and JPA.
    git clone https://github.com/NSparkes95/dsa-final-sprint.git
     cd dsa-final-sprint
     ```
-# dsa-final-sprint
+2.Run with Maven
+mvn spring-boot:run
+
+
+Access the Application
+- Web UI: http://localhost:8080/enter-numbers
+- Previous Snapshots: http://localhost:8080/previous-snapshots
+- H2 Console: http://localhost:8080/h2-console (JDBC URL: jdbc:h2:mem:dsadb, User: sa, Password: empty)
+- Swagger UI: http://localhost:8080/swagger-ui.html
+
+License
+This project is for educational purposes as part of a final sprint assignment.
+
